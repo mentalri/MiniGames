@@ -3,7 +3,7 @@ body {
     color: black;
 }
 
-#titlebox {
+.box {
     margin-top: 3%;
     border-radius: 8px;
     border-color: aqua;

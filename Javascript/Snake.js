@@ -9,8 +9,14 @@ let snake = [{ x: 200, y: 200 }, { x: 200 - snakeBodyPartSize, y: 200 }];
 let dx = snakeBodyPartSize;
 let dy = 0;
 let play = false;
-let delay = 170;
-let food = { x: Math.floor(((Math.random() * snakeboard.width - snakeBodyPartSize) / snakeBodyPartSize) * snakeBodyPartSize), y: Math.floor(((Math.random() * snakeboard.width - snakeBodyPartSize) / snakeBodyPartSize) * snakeBodyPartSize) };
+const delayStart = 170;
+const delayMin = 60;
+const delayReduce = 3;
+let delay = delayStart;
+let food = {
+    x: Math.floor((Math.random() * (snakeboard.width - snakeBodyPartSize))),
+    y: Math.floor((Math.random() * (snakeboard.width - snakeBodyPartSize)))
+};
 let eatenOnLastTick = false;
 let notStopAble = true;
 
@@ -74,18 +80,26 @@ function main() {
         if (hasGameEnded()) {
             snakeboard_ctx.fillStyle = "red";
             snakeboard_ctx.fillText("defeat", snakeboard.width / 2, snakeboard.height / 2);
+            snakeboard_ctx.fillText("Score: " + snake.length, snakeboard.width / 2, (snakeboard.height / 2) + (snakeboard.width * 0.15));
             play = false;
             snake = [{ x: 200, y: 200 }, { x: 200 - snakeBodyPartSize, y: 200 }];
-            delay = 170;
-            food = { x: Math.floor(((Math.random() * snakeboard.width - snakeBodyPartSize) / snakeBodyPartSize) * snakeBodyPartSize), y: Math.floor(((Math.random() * snakeboard.width - snakeBodyPartSize) / snakeBodyPartSize) * snakeBodyPartSize) };
+            delay = delayStart;
+            food = food = {
+                x: Math.floor((Math.random() * (snakeboard.width - snakeBodyPartSize))),
+                y: Math.floor((Math.random() * (snakeboard.width - snakeBodyPartSize)))
+            };
         } else {
             drawFood();
             drawSnake();
         }
         if (foodEaten()) {
-            food = { x: Math.floor(((Math.random() * snakeboard.width - snakeBodyPartSize) / snakeBodyPartSize) * snakeBodyPartSize), y: Math.floor(((Math.random() * snakeboard.width - snakeBodyPartSize) / snakeBodyPartSize) * snakeBodyPartSize) };
+            food = {
+                x: Math.floor((Math.random() * (snakeboard.width - snakeBodyPartSize))),
+                y: Math.floor((Math.random() * (snakeboard.width - snakeBodyPartSize)))
+            };
             eatenOnLastTick = true;
-            delay = delay - 3;
+            if (delay > delayMin)
+                delay = delay - delayReduce;
         }
         if (play)
             main();
