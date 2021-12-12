@@ -1,0 +1,23 @@
+body {
+    background-image: url(../img/backgroundSimple.png);
+    color: black;
+}
+
+#titlebox {
+    margin-top: 3%;
+    border-radius: 8px;
+    border-color: aqua;
+    border-width: 2px;
+    background-color: rgba(0, 0, 0, 0.24);
+}
+
+#background {
+    margin-top: 1%;
+}
+
+#gameCanvas {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 32.9%;
+    margin-right: 32.9%;
+}

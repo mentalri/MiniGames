@@ -1,50 +1,37 @@
 body {
     background-image: url(../img/backgroundSimple.png);
     color: black;
-    animation: toVisible 0.5s normal;
 }
 
-#titlebox{
+#titlebox {
     text-align: center;
     background-color: aquamarine;
     border-radius: 8px;
     margin-top: 1%;
-   
-    
 }
 
-#gamebgbox{
+#gamebgbox {
     margin-top: 2%;
-    
 }
-.gamebox{
+
+.gamebox {
     background-color: aquamarine;
     border-radius: 8px;
 }
-#snakebox{
+
+#snakebox {
     margin-right: 4.2%;
     margin-left: 4.1%;
 }
-#game2box{
+
+#game2box {
     margin-right: 4.1%;
     margin-left: 4.2%;
 }
 
-#snakeimg{
+#snakeimg {
     margin-top: 2%;
     margin-bottom: 2%;
     padding: 1%;
     border-radius: 8px;
-}
-
-
-
-@keyframes aquaToBlack {
-    from {color: aquamarine;}
-    to{color: black;}
-}
-
-@keyframes toVisible {
-    from{opacity: 0.0;}
-    to{opacity: 1;}
 }
