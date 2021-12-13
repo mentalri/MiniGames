@@ -9,8 +9,8 @@ let snake = [{ x: 200, y: 200 }, { x: 200 - snakeBodyPartSize, y: 200 }];
 let dx = snakeBodyPartSize;
 let dy = 0;
 let play = false;
-const delayStart = 170;
-const delayMin = 60;
+const delayStart = 150;
+const delayMin = 80;
 const delayReduce = 3;
 let delay = delayStart;
 let food = {
@@ -91,6 +91,7 @@ function main() {
         } else {
             drawFood();
             drawSnake();
+            drawScore();
         }
         if (foodEaten()) {
             food = {
@@ -105,6 +106,21 @@ function main() {
             main();
     }, delay);
 
+}
+
+function newFood() {
+    food = {
+        x: Math.floor((Math.random() * (snakeboard.width - snakeBodyPartSize))),
+        y: Math.floor((Math.random() * (snakeboard.width - snakeBodyPartSize)))
+    };
+
+}
+
+function drawScore() {
+    snakeboard_ctx.font = snakeboard.width * 0.05 + "px Comic Sans MS";
+    snakeboard_ctx.fillStyle = "red";
+    snakeboard_ctx.fillText("Score: " + snake.length, snakeboard.width * 0.85, snakeboard.height * 0.1);
+    snakeboard_ctx.font = snakeboard.width * 0.15 + "px Comic Sans MS";
 }
 
 function clearCanvas() {
